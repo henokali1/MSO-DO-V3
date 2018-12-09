@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>A4</title>
+
+    <!-- Normalize or reset CSS with your favorite library -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.min.css') }}">
+    <!-- Load paper.css for happy printing -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/paper.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/a4.css') }}">
+    <!-- Set page size here: A5, A4 or A3 -->
+    <!-- Set also "landscape" if you need -->
+    <style>
+        @page {
+            size: A4
+        }
+    </style>
+</head>
+
+
+<body class="A4">
+    <!-- Each sheet element should have the class "sheet" -->
+    <!-- "padding-**mm" is optional: you can set 10, 15, 20 or 25 -->
+    <section class="sheet padding-10mm">
+        <img class="tsm-sig" src="{{ url_for('static', filename='img/sig.png') }}" width="174px" height="41px">
+        <img class="tss-sig" src="{{ url_for('static', filename='img/sig.png') }}" width="174px" height="41px">
+        <div id="one">
+            <table class="tg" width="100%">
+                <tr>
+                    <th class="tg-yw4l th_title" colspan="3">
+                        <b>FUJAIRAH INTERNATIONAL AIRPORT - TSD FORM</b>
+                    </th>
+                </tr>
+                <tr>
+                    <td width='33%' class="tg-yw4l">
+                        <b>FORM NUMBER:</b>
+                        <br>TSD-MSO-112
+                    </td>
+                    <td width='33%' class="tg-yw4l">
+                        <b>FORM NAME:</b>
+                        <br>MSO (Maintenance Service Order)
+
+                    </td>
+                    <td width='33%' class="tg-yw4l">
+                        <b>PREPARED BY:</b>
+                        <br>TSD
+                    </td>
+                </tr>
+                <tr>
+                    <td width='33%' class="tg-yw4l">
+                        <b>REVISION NUMBER: 01</b>
+                    </td>
+                    <td width='33%' class="tg-yw4l">
+                        <b>EFFECTIVE DATE: 21 June 2011</b>
+                    </td>
+                    <td width='33%' class="tg-yw4l">
+                        <b>APPROVED: TSM</b>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div style="text-align: center" id="two">
+            <div>
+                <br>
+                <b>TECHNICAL SERVICES DEPARTMENT</b>
+                <br>
+                <b>
+                    <u>MAINTENANCE SERVICE ORDER</u>
+                </b>
+            </div>
+        </div>
+        <div id="three">
+            <br>
+            <br>
+            <font class="ws" size="3">MSO NO. <u>{{msof.id}}</u>  DATE : <u>{{msof.mso_req_date}}</u>  TIME : <u>{{msof.mso_req_time}}</u> </font>
+            <br>
+            <br>
+            <font class="ws" size="3">REQUESTED BY: <u>{{ msof.requested_by }}</u> SECTION: <u>{{msof.section}}</u></font>
+            <br>
+            <br>
+            <font class="ws" size="3">DEPARTMENT HEAD: <u>{{ msof.department_head }}</u> LOCATION: <u>{{ msof.location }}</u></font>
+            <br>
+            <br>
+            <font class="ws" size="3">DESCRIPTION OF SERVICE: <u>                                                                                  </u></font>
+            <font class="ws" size="3"><u>                                                                                                                                                                </u></font>
+            <font class="ws" size="3"><u>                                                                                                                                                                </u></font>
+            <font class="ws" size="3"><u>                                                                                                                                                                </u></font>
+            <font class="ws" size="3"><u>                                                                                                                                                                </u></font>
+            <font class="ws" size="3"><u>                                                                                                                                                                </u></font>
+        </div>
+        <div id="four"></div>
+        <div id="five">
+            APPROVED BY:
+            <br>
+            <br>
+            <br>
+            <font size="3">
+                <div style="float: left">
+                    TECHNICAL SERVICES MANAGER: _________________________________ DATE: __________
+                </div>
+            </font>
+
+        </div>
+        <div id="six"></div>
+        <div id="seven">
+            <font size="3">
+                ACTUAL WORK DESCRIPTION: _____________________________________________________
+                <font class="ws" size="3"><u>                                                                                                                                                                </u></font>
+                <font class="ws" size="3"><u>                                                                                                                                                                </u></font>
+                <font class="ws" size="3"><u>                                                                                                                                                                </u></font>
+                <font class="ws" size="3"><u>                                                                                                                                                                </u></font>
+                <font class="ws" size="3"><u>                                                                                                                                                                </u></font>
+            </font>
+            <br>
+            <br>
+            <font size="3">
+                PURCHASE REQUSITION NO.: _______________________________________ DATE:
+                <u>23/23/2018</u>
+
+                <br>
+                <br> DATE STARTED:___________________________ DATE COMPLETED: _____________________
+            </font>
+            <br>
+            <br>
+            <font size="3">WORK COMPLETED BY: _________________________________ ID NO.:___________________</font>
+            <br>
+            <br>
+            <font size="3">TOTAL MAN-HOURS :_____________________________________________________________</font>
+            <br>
+            <br>
+            <br>
+            <font size="3">SUPERVISOR:___________________________________________________ DATE: __________</font>
+        </div>
+    </section>
+</body>
+
+</html>

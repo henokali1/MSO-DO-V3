@@ -1,0 +1,45 @@
+{% extends 'base.html' %} {% block title %} All MSO's {% endblock title %} {% block content %}
+<div class="container">
+    <h5>{{msg}}</h5>
+    {%for mso in msos %}
+    <div class="row mso_row" id="r{{mso.id}}">
+        <div class="col s12">
+            <br>
+            <a id="read_mode_a" href="/mso/{{mso.id}}">
+                <div class="chip">
+                    <img src="{{ url_for('static', filename='img/person1.jpg') }}" alt="Contact Person">By: {{ mso.posted_by }}
+                </div>
+                <div class="chip">
+                    {{mso.posted_on}}
+                </div>
+                <div class="chip">CNS-{{mso.id}}</div>
+                <span class="title mso_title">Description of Service</span>
+                <blockquote>{{mso.description_of_service}}</blockquote>
+                <span class="title mso_title">Actual Work Description</span>
+                <blockquote>{{mso.actual_work_descripition}}</blockquote>
+
+                {{mso.can_edit}}</a>
+            {% if current_user['first_name'] + ' ' + current_user['last_name'] == mso.posted_by and (mso.requested_by_other_department == None ) and (mso.tsm_approval == None and mso.supervisor_approval == None) %}
+            <a id="" href="/mso/edit/{{mso.id}}" class="waves-effect waves-light green btn modal-trigger">Edit</a>
+            <a id="{{mso.id}}" href="#" class="delete waves-effect waves-light red btn modal-trigger">Delete</a>
+            <a href="/mso/{{mso.id}}" class="waves-effect waves-light blue btn modal-trigger">More</a>
+            {% elif mso.requested_by_other_department == 1 %}
+            
+            {% if mso.completed or (mso.tsm_approval == 1 and mso.supervisor_approval == 1) %}
+            <a href="#" class="waves-effect waves-light green disabled btn modal-trigger">Complete MSO</a>
+            {% elif (mso.tsm_approval == 1 or mso.supervisor_approval == 1) %}
+            <a href="/mso/edit/{{mso.id}}" class="waves-effect waves-light green btn modal-trigger">Complete MSO</a>
+            {% else %}
+            <a href="#" class="waves-effect waves-light green disabled btn modal-trigger">Complete MSO</a>
+            {%endif%} {% else %}
+            <a id="read_mode_a" href="/mso/edit/{{mso.id}}" class="waves-effect waves-light green disabled btn modal-trigger">Edit</a>
+            <a id="read_mode_a" href="/mso/delete/{{mso.id}}" class="waves-effect waves-light red disabled btn modal-trigger">Delete</a>
+            <a href="/mso/{{mso.id}}" class="waves-effect waves-light blue btn modal-trigger">More</a>
+            {% endif %}
+            <br>
+            <br>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}
